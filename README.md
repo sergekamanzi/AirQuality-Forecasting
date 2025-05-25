@@ -1,7 +1,3 @@
-Here’s a **well-structured and polished version** of your project report formatted for a GitHub README file:
-
----
-
 # Air Quality Forecasting Project
 
 ## Introduction
