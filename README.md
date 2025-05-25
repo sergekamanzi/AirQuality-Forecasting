@@ -1,74 +1,64 @@
-Air Quality Forecasting Project Report
-Introduction
-This project aimed to predict PM2.5 concentrations, a critical air quality metric, using a Long Short-Term Memory (LSTM) neural network. The goal was to achieve a Root Mean Square Error (RMSE) below 4000 on the leaderboard, improving upon an initial RMSE of 5180.4377. The dataset included time-series data with PM2.5 values and weather features, requiring robust preprocessing and modeling to capture temporal patterns and pollution spikes.
-Challenges
-The following challenges were encountered during the project:
+Here’s a **well-structured and polished version** of your project report formatted for a GitHub README file:
 
+---
 
+# Air Quality Forecasting Project
 
-Challenge
-Description
-Solution
+## Introduction
 
+This project focuses on forecasting PM2.5 air pollutant concentrations using a **Long Short-Term Memory (LSTM)** neural network. The primary goal is to reduce the **Root Mean Square Error (RMSE)** on the leaderboard to **below 4000**, significantly improving from the initial RMSE of **5180.4377**.
 
+The dataset comprises **hourly PM2.5 readings** along with associated **weather features** such as temperature and wind speed, spanning multiple years. The core task is to accurately predict future PM2.5 values on the test set.
 
-High Initial RMSE
-The baseline model's RMSE (5180.4377) was far above the target, indicating poor generalization and failure to capture PM2.5 spikes.
-Implemented bidirectional LSTM with an attention mechanism, added temporal features, and used robust scaling to handle outliers.
+We employed a **Bidirectional LSTM with an attention mechanism**, robust preprocessing strategies, and temporal feature engineering to uncover complex patterns in the data.
 
+---
 
-Missing chrono Library
-The initial code relied on the chrono library for datetime parsing, which was unavailable in the environment.
-Replaced chrono.parseDate with pd.to_datetime for robust datetime handling without external dependencies.
+## Challenges & Solutions
 
+| **Challenge**             | **Description**                                                                             | **Solution**                                                                                              |
+| ------------------------- | ------------------------------------------------------------------------------------------- | --------------------------------------------------------------------------------------------------------- |
+| High Initial RMSE         | Baseline model had an RMSE of 5180.4377, indicating poor performance.                       | Introduced a Bidirectional LSTM with attention, robust scaling, and temporal feature engineering.         |
+| Missing `chrono` Library  | Initial code used `chrono` for datetime parsing, which wasn’t available in the environment. | Replaced `chrono.parseDate` with `pd.to_datetime` for compatibility.                                      |
+| Missing Values in Data    | Missing entries disrupted temporal continuity, degrading LSTM performance.                  | Applied `forward-fill (ffill)` to maintain time-series structure.                                         |
+| Capturing PM2.5 Spikes    | Data included sharp PM2.5 spikes (e.g., values up to 390) that were hard to model.          | Used **attention layers** to focus on critical time steps and **RobustScaler** to handle outliers.        |
+| Sequence Length Selection | A fixed sequence length (48 hours) might not capture all relevant patterns.                 | Tested 24-hour sequences to balance performance and efficiency; future plans include testing 48/72 hours. |
 
-Missing Values
-Missing data in the time-series could disrupt temporal patterns if not handled properly.
-Applied forward-fill (ffill) to preserve temporal continuity, replacing mean imputation.
+---
 
+## Knowledge Gained
 
-Temporal Dependencies
-The original sequence length of 48 hours was suboptimal for capturing daily and seasonal patterns.
-Experimented with a 24-hour sequence length to focus on daily cycles, with plans to test 12 and 72 hours.
+| **Area**                  | **What I Learned**                                                                                                                                         |
+| ------------------------- | ---------------------------------------------------------------------------------------------------------------------------------------------------------- |
+| Time-Series Preprocessing | Preserving temporal continuity using forward-fill and deriving cyclic features (hour, day, month, weekday).                                                |
+| Robust Scaling            | RobustScaler outperforms MinMaxScaler on outlier-prone data by using medians and IQR for scaling.                                                          |
+| Bidirectional LSTM        | Enhances performance by analyzing input sequences in both forward and backward directions.                                                                 |
+| Attention Mechanism       | Custom attention layers help the model focus on the most relevant time steps, especially during PM2.5 spikes.                                              |
+| Model Optimization        | Applied advanced training methods: **Nadam optimizer**, **learning rate scheduling**, **early stopping**, and **L2 regularization** to reduce overfitting. |
+| Submission Formatting     | Gained experience formatting predictions for leaderboard: `%Y-%m-%d %H:%M:%S` datetime and integer PM2.5 values.                                           |
 
+---
 
-Outlier Sensitivity
-PM2.5 data included spikes (e.g., 390 µg/m³), causing instability in scaling and predictions.
-Used RobustScaler to mitigate the impact of outliers, ensuring stable feature and target scaling.
+## ✅ Results & Improvements
 
+* **Architecture**:
 
-Knowledge Gained
+  * Two-layer Bidirectional LSTM with 128 and 64 units.
+  * **Attention Layer** for better focus on critical time steps.
+  * **Dropout (0.2)** and **Batch Normalization** for regularization.
+  * **Dense output layers** with **L2 regularization**.
 
-Time-Series Modeling: Learned to design and implement bidirectional LSTM models to capture both forward and backward temporal dependencies in air quality data.
-Attention Mechanisms: Gained expertise in custom attention layers to focus on critical time steps, improving prediction accuracy for PM2.5 spikes.
-Feature Engineering: Understood the importance of temporal features (hour, day, month, day of week) in capturing diurnal and seasonal patterns in environmental data.
-Robust Preprocessing: Mastered the use of RobustScaler for handling outliers and forward-fill for preserving time-series continuity.
-Error Handling: Learned to troubleshoot dependency issues (e.g., missing chrono library) and adapt code to use standard libraries like pandas.
-Model Optimization: Explored advanced techniques like learning rate scheduling, early stopping, and regularization (L2, dropout) to improve model convergence and prevent overfitting.
+* **Preprocessing**:
 
-Results
+  * Robust missing value imputation using forward-fill.
+  * Feature scaling using **RobustScaler**.
+  * Temporal feature engineering (hour, day, month, weekday).
 
-Model Performance:
-The improved model used a bidirectional LSTM with 128 and 64 units, an attention layer, and dense layers with L2 regularization and dropout (0.2).
-Training RMSE was reduced significantly (exact value printed during execution), indicating better capture of PM2.5 patterns compared to the baseline (5180.4377).
-The model was evaluated on a 20% validation split, with early stopping and learning rate reduction to ensure optimal convergence.
+---
 
+## 📈 Future Work
 
-Key Findings:
-Temporal features (hour, day, month, day of week) significantly improved the model’s ability to capture cyclic patterns in PM2.5 data.
-The attention mechanism effectively focused on high-impact time steps, such as pollution spikes, which are critical for reducing RMSE.
-Robust scaling mitigated the impact of outliers, leading to more stable predictions.
-The 24-hour sequence length better captured daily patterns compared to the original 48-hour window, though further tuning is needed.
-The submission file was formatted correctly (row ID as datetime, pm2.5 as integers), ensuring compatibility with the leaderboard.
-
-
-
-Conclusion
-The project successfully improved the baseline LSTM model by incorporating bidirectional layers, an attention mechanism, robust scaling, and temporal features. The training RMSE suggests progress toward the target of below 4000, though leaderboard performance depends on test data distribution. Key challenges, such as missing dependencies and outlier sensitivity, were addressed through robust preprocessing and library adjustments.
-Proposed Improvements and Next Steps
-
-Hyperparameter Tuning: Experiment with sequence lengths (12, 48, 72 hours) to optimize temporal dependency capture.
-Feature Engineering: Add lagged PM2.5 values or weather interaction terms (e.g., temperature * wind speed) to capture additional patterns.
-Model Exploration: Test a hybrid CNN-LSTM model or a transformer-based architecture for better long-term dependency modeling.
-Data Augmentation: Incorporate external data (e.g., traffic or industrial activity) if available, to enhance prediction accuracy.
-Leaderboard Validation: Submit the generated submission.csv to verify the RMSE and iterate based on results.
+* Explore **longer sequence lengths (48 or 72 hours)**.
+* Tune **hyperparameters** further using grid/random search.
+* Add **external features** like AQI categories or regional data.
+* Try **transformer-based models** or hybrid CNN-LSTM architectures.
