@@ -49,3 +49,5 @@ We employed a **Bidirectional LSTM with an attention mechanism**, robust preproc
 2.https://www.youtube.com/watch?v=94PlBzgeq90
 
 3.http://youtube.com/watch?v=S8tpSG6Q2H0
+
+4. optimzer and regulizer combination = https://medium.com/@ppraveen2150/the-role-of-optimizers-in-machine-learning-use-cases-and-best-practices-bb4b5bb94252
