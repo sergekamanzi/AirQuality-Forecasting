@@ -30,27 +30,10 @@ We employed a **Bidirectional LSTM with an attention mechanism**, robust preproc
 | Robust Scaling            | RobustScaler outperforms MinMaxScaler on outlier-prone data by using medians and IQR for scaling.                                                          |
 | Bidirectional LSTM        | Enhances performance by analyzing input sequences in both forward and backward directions.                                                                 |
 | Attention Mechanism       | Custom attention layers help the model focus on the most relevant time steps, especially during PM2.5 spikes.                                              |
-| Model Optimization        | Applied advanced training methods: **Nadam optimizer**, **learning rate scheduling**, **early stopping**, and **L2 regularization** to reduce overfitting. |
 | Submission Formatting     | Gained experience formatting predictions for leaderboard: `%Y-%m-%d %H:%M:%S` datetime and integer PM2.5 values.                                           |
 
 ---
 
-## ✅ Results & Improvements
-
-* **Architecture**:
-
-  * Two-layer Bidirectional LSTM with 128 and 64 units.
-  * **Attention Layer** for better focus on critical time steps.
-  * **Dropout (0.2)** and **Batch Normalization** for regularization.
-  * **Dense output layers** with **L2 regularization**.
-
-* **Preprocessing**:
-
-  * Robust missing value imputation using forward-fill.
-  * Feature scaling using **RobustScaler**.
-  * Temporal feature engineering (hour, day, month, weekday).
-
----
 
 ## 📈 Future Work
 
