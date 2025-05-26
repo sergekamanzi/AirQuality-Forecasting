@@ -41,3 +41,11 @@ We employed a **Bidirectional LSTM with an attention mechanism**, robust preproc
 * Tune **hyperparameters** further using grid/random search.
 * Add **external features** like AQI categories or regional data.
 * Try **transformer-based models** or hybrid CNN-LSTM architectures.
+
+## citation
+
+1.https://machinelearningmastery.com/how-to-develop-lstm-models-for-time-series-forecasting/
+
+2.https://www.youtube.com/watch?v=94PlBzgeq90
+
+3.http://youtube.com/watch?v=S8tpSG6Q2H0
