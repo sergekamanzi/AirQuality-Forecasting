@@ -35,7 +35,7 @@ We employed a **Bidirectional LSTM with an attention mechanism**, robust preproc
 ---
 
 
-## 📈 Future Work
+##  Future Work
 
 * Explore **longer sequence lengths (48 or 72 hours)**.
 * Tune **hyperparameters** further using grid/random search.
