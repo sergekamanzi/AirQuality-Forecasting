@@ -44,10 +44,10 @@ We employed a **Bidirectional LSTM with an attention mechanism**, robust preproc
 
 ## citation
 
-1.https://machinelearningmastery.com/how-to-develop-lstm-models-for-time-series-forecasting/
+1.How to Develop LSTM Models for Time Series Forecasting = https://machinelearningmastery.com/how-to-develop-lstm-models-for-time-series-forecasting/
 
-2.https://www.youtube.com/watch?v=94PlBzgeq90
+2.LSTM Time Series Forecasting with TensorFlow & Python = https://www.youtube.com/watch?v=94PlBzgeq90
 
-3.http://youtube.com/watch?v=S8tpSG6Q2H0
+3.Time Series Forecasting With RNN(LSTM) = http://youtube.com/watch?v=S8tpSG6Q2H0
 
 4. optimzer and regulizer combination = https://medium.com/@ppraveen2150/the-role-of-optimizers-in-machine-learning-use-cases-and-best-practices-bb4b5bb94252
